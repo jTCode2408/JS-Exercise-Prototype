@@ -89,6 +89,10 @@ Car.prototype.fill= function(gallons){
 this.tank += gallons;
 }
 
+Car.prototype.drive = function(){
+return `I ran out of fuel at ${this.odometer} miles!`;
+}
+
 /*
   TASK 3
     - Write a Baby constructor subclassing Person.
@@ -113,10 +117,19 @@ Baby.prototype.play= function(){
   TASK 4
 
   In your own words explain the four principles for the "this" keyword below:
-  1. 
-  2. 
-  3. 
-  4. 
+
+  1. Window/global binding. - the value of 'this.' will be entire window object because called on the global scope.
+
+
+  2. Implicit binding. - the .this keyword will point to the object that is directly before the dot when the function is invoked. Only applies to objects with methods.
+  
+  
+  3. Explicit binding. -using apply,call, bind to explicitly change 'this.' refers to. Call immediately invokes function & passes arguments 1 by 1. Bind passes arguments 1 by 1 but doesnt immediately invoke function. will return brand new function that can be stored for later. Apply will immediately invoke function & pass as an array.
+
+
+
+
+  4. New binding. -uses 'new' keyword to create context for a new object and 'this.' will point to that new object. Using constructor function we can create as a template for that object.
 */
 
 
