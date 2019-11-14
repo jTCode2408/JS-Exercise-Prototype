@@ -39,9 +39,29 @@ Airplane.prototype.land = function () {
         + It should return a string with `name` and `age`. Example: "Mary, 50"
 */
 
-function Person() {
+function Person(name, age) {
+  this.stomach= [];
+  this.name=name,
+  this.age=age
+};
+
+  Person.prototype.eat = function(someFood){
+    if (this.stomach.length < 10){
+      this.stomach.push(someFood);
+    };
+    
+    }
+  
+Person.prototype.poop = function(stomach){
+this.stomach = [];
 
 }
+Person.prototype.toString= function(name, age){
+return `${this.name}, ${this.age}`;
+}
+
+
+
 
 /*
   TASK 2
@@ -57,8 +77,20 @@ function Person() {
         + The `drive` method should return a string "I ran out of fuel at x miles!" x being `odometer`.
 */
 
-function Car() {
+function Car(model, milesPerGallon) {
+  this.milesPerGallon=milesPerGallon,
+  this.model=model,
+  this.tank=0,
+  this.odometer=0
 
+}
+
+Car.prototype.fill= function(gallons){
+this.tank += gallons;
+}
+
+Car.prototype.drive = function(){
+return `I ran out of fuel at ${this.odometer} miles!`;
 }
 
 /*
@@ -68,7 +100,16 @@ function Car() {
     - Besides the methods on Person.prototype, babies have the ability to `.play()`:
         + Should return a string "Playing with x", x being the favorite toy.
 */
-function Baby() {
+function Baby(name, age, favoriteToy) {
+this.name= name,
+this.age=age,
+this.favoriteToy=favoriteToy
+}
+Baby.prototype= Object.create(Person.prototype);
+
+Baby.prototype.play= function(){
+  return `Playing with ${this.favoriteToy}`;
+
 
 }
 
@@ -76,10 +117,19 @@ function Baby() {
   TASK 4
 
   In your own words explain the four principles for the "this" keyword below:
-  1. 
-  2. 
-  3. 
-  4. 
+
+  1. Window/global binding. - the value of 'this.' will be entire window object because called on the global scope.
+
+
+  2. Implicit binding. - the .this keyword will point to the object that is directly before the dot when the function is invoked. Only applies to objects with methods.
+  
+  
+  3. Explicit binding. -using apply,call, bind to explicitly change 'this.' refers to. Call immediately invokes function & passes arguments 1 by 1. Bind passes arguments 1 by 1 but doesnt immediately invoke function. will return brand new function that can be stored for later. Apply will immediately invoke function & pass as an array.
+
+
+
+
+  4. New binding. -uses 'new' keyword to create context for a new object and 'this.' will point to that new object. Using constructor function we can create as a template for that object.
 */
 
 
